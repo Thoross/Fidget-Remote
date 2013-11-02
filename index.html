@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="fidgetStream">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fidget Remote - Client</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bower_components/bootswatch/slate/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+    <div class="container" ng-controller="searchController">
+        <div class="col-lg-12 col-sm-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" ng-model="query" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="search()">
+                        <span class="glyphicon glyphicon-search"></span> Search
+                    </button>
+                </span>
+            </div>
+            <div id="search-results">
+                <twitch-stream class="col-lg-4 game-result" ng-repeat="stream in streams" stream="stream"></twitch-stream>
+            </div>
+        </div>
+    </div>
+    <script src="bower_components/socket.io-client/dist/socket.io.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
