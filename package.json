@@ -1,0 +1,6 @@
+{
+  "name": "fidget-remote-server",
+  "dependencies": {
+    "socket.io": "0.9.16"
+  }
+}

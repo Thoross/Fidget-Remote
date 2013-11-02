@@ -1,58 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="fidgetStream">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Page</title>
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <link href="http://bootswatch.com/slate/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-    .game-result
-    {
-        margin-bottom: 5px;
-    }
-    </style>
+    <title>Fidget Remote - Client</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bower_components/bootswatch/slate/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-    <div class="container" style="padding-top:40px;">
+    <div class="container" ng-controller="searchController">
         <div class="col-lg-12 col-sm-12">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" id="searchTxt"/>
+                <input type="text" class="form-control" placeholder="Search" ng-model="query" />
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" id="search"><span class="glyphicon glyphicon-search"></span> Search</button>
+                    <button class="btn btn-default" type="button" ng-click="search()">
+                        <span class="glyphicon glyphicon-search"></span> Search
+                    </button>
                 </span>
             </div>
-        </div>
-        <br/>
-        <br/>
-        <div id="games" class="">
-                
+            <div id="search-results">
+                <twitch-stream class="col-lg-4 game-result" ng-repeat="stream in streams" stream="stream"></twitch-stream>
+            </div>
         </div>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="http://192.168.2.18:9876/socket.io/socket.io.js"></script>
-    <script>
-        $(document).ready(function(){
-            var socket = io.connect("http://192.168.2.18:9876");
-            $('#search').click(function(){
-                var searchQuery = 'https://api.twitch.tv/kraken/search/streams?limit=25&offset=0&q=';
-                var searchText = $("#searchTxt").val();
-                searchQuery = searchQuery + searchText;
-                socket.emit('search',{query: searchQuery});
-                console.log(searchQuery);
-            });
-            socket.on("search-result", function(data){
-                $(".game-result").each(function(){
-                    $(this).remove();
-                });
-                var streams = data.streams;
-                for (streamIndex in streams){
-                    var stream = streams[streamIndex];
-                    console.log(stream);
-                    var streamInfo = "<div class='col-lg-4 game-result'><a href='"+stream.channel.url+"' class='thumbnail'><img src='"+stream.preview.large+"'/></a><span class='glyphicon glyphicon-user'></span> "+stream.channel.display_name+"<span class='pull-right'>"+stream.viewers+" Viewers <span class='glyphicon glyphicon-eye-open'></span></span></div>";
-                    $("#games").append(streamInfo);
-                }
-            });
-        });
-    </script>
+    <script src="bower_components/socket.io-client/dist/socket.io.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
