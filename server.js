@@ -1,5 +1,19 @@
-var io = require('socket.io').listen(9876);
+var io = require('socket.io').listen(3001);
 var http = require('https');
+var express = require('express');
+var app = express();
+
+app.set('views', __dirname+'/views');
+app.set('view engine', 'jade');
+
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/bower_components'));
+
+module.exports.app = app;
+routes = require('./routes/routes');
+
+app.listen('3000');
+console.log('Listening on Port 3000');
 
 var twitchAPI = 'https://api.twitch.tv/kraken/search/streams?limit=25&offset=0&q=';
 

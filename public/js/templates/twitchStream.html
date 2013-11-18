@@ -1,0 +1,13 @@
+<div class="stream">
+    <a class="thumbnail" href="{{ stream.channel.url }}">
+      <img ng-src="{{ stream.preview.large }}" alt="{{ stream.channel.display_name }}" />
+    </a>
+    <div>
+        <span class="glyphicon glyphicon-user"></span>
+            {{ stream.channel.display_name }}
+        <span class="pull-right">
+            {{ stream.viewers }} Viewers
+            <span class="glyphicon glyphicon-eye-open"></span>
+        </span>
+    </div>
+</div>

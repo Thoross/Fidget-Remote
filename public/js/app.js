@@ -2,7 +2,7 @@
 
 var fidgetStream = angular.module('fidgetStream', ['btford.socket-io']).
 config(['socketProvider', function(socketProvider) {
-    var socket = io.connect('http://localhost:9876');
+    var socket = io.connect('http://192.168.2.10:3001');
         socketProvider.ioSocket(socket);
 }]);
 
