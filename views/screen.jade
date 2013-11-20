@@ -6,11 +6,13 @@ html(ng-app='fidgetStream')
         link(rel="stylesheet" href="/bootswatch/slate/bootstrap.min.css")
         link(rel="stylesheet" href="/css/main.css")
     body
-        .container(ng-controller='searchController')
+        .container(ng-controller='screenController')
             h1 Fidget Remote
                 small  A Twitch.tv Remote
+            screen(screen='screen')
 
         script(src="/angular/angular.min.js")
         script(src="/angular-socket-io/socket.js")
         script(src="/socket.io-client/dist/socket.io.js")
+        script(src='/bootstrap/dist/js/bootstrap.min.js')
         script(src="/app.js")
