@@ -3,7 +3,7 @@
 }
 
 #search-results {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .thumbnail{
@@ -16,6 +16,13 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.stream-status{
+    display:inline-block;
+}
+
+.loading{
 }
 
 .clear{

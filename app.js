@@ -1,8 +1,7 @@
 'use strict';
-var config = require('./config/config');
 var fidgetStream = angular.module('fidgetStream', ['btford.socket-io','infinite-scroll']).
 config(['socketProvider', function(socketProvider) {
-    var socket = io.connect();
+    var socket = io.connect('http://localhost:3001');
         socketProvider.ioSocket(socket);
 }]);
 
@@ -10,6 +9,7 @@ fidgetStream.controller('searchController', ['$scope', 'socket', function($scope
     $scope.streams = [];
     $scope.query  = '';
     $scope.nextQuery = '';
+    $scope.loading = false;
 
 
     $scope.search = function() {
@@ -23,6 +23,7 @@ fidgetStream.controller('searchController', ['$scope', 'socket', function($scope
     };
 
     socket.on('twitch:search:success', function(searchResults) {
+        $scope.loading = false;
         $scope.streams.push.apply($scope.streams, searchResults.streams);
         $scope.nextQuery = searchResults._links.next;
         console.log('$scope.streams: '+$scope.streams);
@@ -31,6 +32,7 @@ fidgetStream.controller('searchController', ['$scope', 'socket', function($scope
     });
 
    $scope.loadNext = function(){
+       $scope.loading = true;
         if($scope.query != '')
             socket.emit('twitch:search',{query: $scope.query, next: $scope.nextQuery});
     }
