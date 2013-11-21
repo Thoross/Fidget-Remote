@@ -8,13 +8,12 @@ config(['socketProvider', function(socketProvider) {
 fidgetStream.controller('searchController', ['$scope', 'socket', function($scope, socket) {
     $scope.streams = [];
     $scope.query  = '';
-    $scope.nextQuery = '';
     $scope.loading = false;
 
 
     $scope.search = function() {
         $scope.streams = [];
-        socket.emit('twitch:search', { query: $scope.query, next: null });
+        socket.emit('twitch:search', { query: $scope.query });
     };
 
     $scope.play = function(){
@@ -25,16 +24,17 @@ fidgetStream.controller('searchController', ['$scope', 'socket', function($scope
     socket.on('twitch:search:success', function(searchResults) {
         $scope.loading = false;
         $scope.streams.push.apply($scope.streams, searchResults.streams);
-        $scope.nextQuery = searchResults._links.next;
+        $scope.nextQuery = searchResults.streams.length > 0 ? searchResults._links.next : null;
         console.log('$scope.streams: '+$scope.streams);
         console.log('$scope.nextQuery: '+$scope.nextQuery);
 
     });
 
-   $scope.loadNext = function(){
-       $scope.loading = true;
-        if($scope.query != '')
-            socket.emit('twitch:search',{query: $scope.query, next: $scope.nextQuery});
+    $scope.loadNext = function() {
+        if ($scope.nextQuery) {
+            $scope.loading = true;
+            socket.emit('twitch:search', { next: $scope.nextQuery });
+        }
     }
 }]);
 

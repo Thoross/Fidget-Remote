@@ -25,7 +25,7 @@ html(ng-app='fidgetStream')
                div(id='search-results' )
                    twitch-stream(class="col-lg-4 game-result" ng-repeat="stream in streams" stream="stream" stream-click='play' )
                div(class='clear')
-           div(ng-show='streams.length' class='col-lg-12 col-sm-12 loading')
+           div(ng-show='loading' class='col-lg-12 col-sm-12 loading')
                h2(class='text-center') Loading more streams...
 
        script(src='/jquery/jquery.min.js')
