@@ -14,7 +14,7 @@ html(ng-app='fidgetStream')
            h1 Fidget Remote
                 br
                 small  A Twitch.tv Remote
-           div(class='col-lg-12 col-sm-12' infinite-scroll='loadNext()' infinite-scroll-scroll-distance='4' infinite-scroll-diabled='loading')
+           div(class='col-lg-12 col-sm-12' infinite-scroll='loadNext()' infinite-scroll-scroll-distance='4' infinite-scroll-disabled='loading')
 
                .input-group
                    input(type='text' class='form-control' placeholder='Search' ng-model='query')
@@ -23,7 +23,7 @@ html(ng-app='fidgetStream')
                            span(class='glyphicon glyphicon-search')
                            span()  Search
                div(id='search-results' )
-                   twitch-stream(class="col-lg-4 game-result" ng-repeat="stream in streams" stream="stream" stream-click='play' )
+                   twitch-stream(class="col-lg-4 game-result" ng-repeat="stream in streams" stream="stream" playStream='playStream(name)' )
                div(class='clear')
            div(ng-show='loading' class='col-lg-12 col-sm-12 loading')
                h2(class='text-center') Loading more streams...

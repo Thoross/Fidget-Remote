@@ -1,7 +1,6 @@
-<div class="stream">
+<div class="stream"'>
     <span class="stream-status">{{stream.channel.status}}</span>
-    <input type="hidden" value="{{stream.channel.name}}"/>
-      <img ng-click="playStream({{stream.channel.name}})" ng-src="{{ stream.preview.large }}" alt="{{ stream.channel.display_name }}" class="thumbnail" />
+      <img play="playStream({{stream.channel.display_name}})" ng-src="{{ stream.preview.large }}" alt="{{ stream.channel.display_name }}" class="thumbnail" />
     <div>
         <span class="glyphicon glyphicon-user"></span>
             {{ stream.channel.display_name }}

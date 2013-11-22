@@ -41,6 +41,7 @@ io.sockets.on('connection', function(socket) {
     });
 
     socket.on('twitch:play', function(stream){
+        console.log(stream);
         socket.emit('play-stream', {channel_name: stream})
     });
 });
