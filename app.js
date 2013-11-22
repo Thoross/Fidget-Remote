@@ -1,24 +1,25 @@
-'use strict';
+
 var fidgetStream = angular.module('fidgetStream', ['btford.socket-io','infinite-scroll']).
 config(['socketProvider', function(socketProvider) {
     var socket = io.connect('http://localhost:3001');
         socketProvider.ioSocket(socket);
 }]);
 
+
+
 fidgetStream.controller('searchController', ['$scope', 'socket', function($scope, socket) {
     $scope.streams = [];
     $scope.query  = '';
     $scope.loading = false;
-
 
     $scope.search = function() {
         $scope.streams = [];
         socket.emit('twitch:search', { query: $scope.query });
     };
 
-    $scope.play = function(){
+    $scope.playStream = function(name){
         console.log("I'm in the play function.");
-        socket.emit('twitch:play', {channel_name: $scope.name})
+        socket.emit('twitch:play', {channel_name: name})
     };
 
     socket.on('twitch:search:success', function(searchResults) {
@@ -42,7 +43,14 @@ fidgetStream.directive('twitchStream', [function() {
     return {
         restrict: 'E',
         scope: {
-            stream: '=stream'
+            stream: '=stream',
+            playStream: '&'
+        },
+        link: function (scope, element, attrs) {
+            element.bind('click',function(){
+                //scope.$apply('playStream(scope.stream.channel.display_name)');
+                scope.playStream(scope.stream.channel.display_name)
+            });
         },
         templateUrl: '/js/templates/twitchStream.html'
     }
