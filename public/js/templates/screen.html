@@ -1,8 +1,8 @@
 <object type="application/x-shockwave-flash"
-        height="640"
-        width=""
+        height="350"
+        width="640"
         id="live_embed_player_flash"
-        data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{channel_name}}"
+        data="{{channel.objectData}}"
         bgcolor="#000000">
     <param  name="allowFullScreen"
             value="true" />
@@ -13,5 +13,5 @@
     <param  name="movie"
             value="http://www.twitch.tv/widgets/live_embed_player.swf" />
     <param  name="flashvars"
-            value="hostname=www.twitch.tv&channel={{channel_name}}&auto_play=true&start_volume=25" />
+            value="{{channel.flashVars}}" />
 </object>

@@ -21,6 +21,7 @@ console.log('Listening on Port 3000');
 var twitchAPI = 'https://api.twitch.tv/kraken/search/streams?limit=25&offset=0&q=';
 
 io.sockets.on('connection', function(socket) {
+    console.log('');
     socket.on('twitch:search', function(options) {
         var query = options.next != null ? options.next : twitchAPI + options.query;
         var request = http.get(query, function(res) {
@@ -41,6 +42,6 @@ io.sockets.on('connection', function(socket) {
     });
 
     socket.on('twitch:play', function(stream){
-        socket.emit('play-stream', {channel_name: stream})
+        io.sockets.emit('play-stream', stream);
     });
 });

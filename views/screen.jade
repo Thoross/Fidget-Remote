@@ -8,11 +8,12 @@ html(ng-app='fidgetStream')
     body
         .container(ng-controller='screenController')
             h1 Fidget Remote
+                br
                 small  A Twitch.tv Remote
-            screen(screen='screen')
+            screen(channel='channel' ng-show='loaded')
 
         script(src="/angular/angular.min.js")
         script(src="/angular-socket-io/socket.js")
         script(src="/socket.io-client/dist/socket.io.js")
-        script(src='/bootstrap/dist/js/bootstrap.min.js')
+        script(src='/ngInfiniteScroll/ng-infinite-scroll.js')
         script(src="/app.js")
