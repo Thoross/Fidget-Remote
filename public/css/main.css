@@ -20,9 +20,13 @@
 
 .stream-status{
     display:inline-block;
+    text-overflow: ellipsis;
 }
 
-.loading{
+.playing{
+    margin-bottom:5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .clear{

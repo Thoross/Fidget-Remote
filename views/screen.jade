@@ -10,10 +10,12 @@ html(ng-app='fidgetStream')
             h1 Fidget Remote
                 br
                 small  A Twitch.tv Remote
-            screen(channel='channel' ng-show='loaded')
+            div(ng-show='loaded')
+                screen(channel='channel')
 
         script(src="/angular/angular.min.js")
         script(src="/angular-socket-io/socket.js")
         script(src="/socket.io-client/dist/socket.io.js")
         script(src='/ngInfiniteScroll/ng-infinite-scroll.js')
-        script(src="/app.js")
+        script(src='http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js')
+        script(src='/app.js')
