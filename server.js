@@ -3,7 +3,6 @@
  Email: brendan.betts@live.com
  */
 
-var config = require("./config/config");
 var express = require('express');
 var http = require('http');
 var https = require('https');
@@ -23,5 +22,5 @@ module.exports.app = app;
 module.exports.util = util;
 
 routes = require('./routes/routes');
-server.listen(config.serverPort);
+server.listen(3000|| process.env.PORT);
 util.log("Listening on port " +  server.address().port);
