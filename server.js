@@ -22,5 +22,5 @@ module.exports.app = app;
 module.exports.util = util;
 
 routes = require('./routes/routes');
-server.listen(3000|| process.env.PORT);
+server.listen(3000 || process.env.PORT);
 util.log("Listening on port " +  server.address().port);
