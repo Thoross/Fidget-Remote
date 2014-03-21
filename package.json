@@ -5,7 +5,6 @@
       "url": "https://github.com/Thoross/Fidget-Remote.git"
   },
   "dependencies": {
-    "socket.io": "0.9.16",
     "jade": "0.35.0",
     "bower":"*",
     "express": "3.x"
