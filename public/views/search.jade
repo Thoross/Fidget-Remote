@@ -5,9 +5,10 @@
 
 html
     head
-        link(rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css")
-        meta(name="viewport" content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet" href="/css/index.css")
-        title Fidget Remote - A Twitch TV Remote
+        include partials/head.jade
+        link(href="/css/search.css" rel="stylesheet")
     body
         include partials/nav.jade
+        section(id="search")
+        .container
+            h2 Search for a stream to watch

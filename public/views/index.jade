@@ -4,9 +4,12 @@
 
 html
     head
-        link(rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css")
-        meta(name="viewport" content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet" href="/css/index.css")
-        title Fidget Remote - A Twitch TV Remote
+        include partials/head.jade
     body
         include partials/nav.jade
+
+        section(id="about")
+            .container
+                h3 About
+                p Fidget Remote is a Twitch.tv remote that will allow you to watch your favourite streams from wherever you want.
+                p It's simple; just sync a remote device to your main screen and you can start searching for a stream to watch.
