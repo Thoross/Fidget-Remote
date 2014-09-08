@@ -2,14 +2,17 @@ html(ng-app='fidgetStream')
     head
         title Fidget Remote
         meta(name="viewport" content="width=device-width, initial-scale=1.0" )
+        link(href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css')
         link(rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css")
-        link(rel="stylesheet" href="/bootswatch/slate/bootstrap.min.css")
-        link(rel="stylesheet" href="/css/main.css")
+        link(rel="stylesheet" href="/less/main.css")
     body
-        .container(ng-controller='screenController')
-            h1 Fidget Remote
-                br
-                small  A Twitch.tv Remote
+        h1.site-header
+            span.thin Fidget
+            span.thick Remote
+            br
+            .thiner A Twitch.tv Remote
+        div(ng-controller='screenController')
+
             div(ng-show='loaded')
                 screen(channel='channel')
 

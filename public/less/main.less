@@ -1,0 +1,87 @@
+@background: #6441A5;
+@white: #fff;
+@font: "Lato",sans-serif;
+
+.ellipsis()
+{
+  text-overflow: ellipsis;
+}
+
+.alter-font(@weight, @style)
+{
+  font-weight: @weight;
+  font-style: @style;
+}
+
+body
+{
+  font-family: @font;
+  background-color: @background;
+  color: @white;
+}
+
+#search-results {
+  margin-top: 20px;
+}
+
+.thumbnail{
+  margin-bottom:0px;
+  cursor: pointer;
+}
+
+.stream{
+  margin-bottom:5px;
+  white-space: nowrap;
+  overflow: hidden;
+  .ellipsis;
+  min-height: 261px;
+  cursor: pointer;
+}
+
+.stream-status{
+  .ellipsis;
+  .alter-font(bold,oblique);
+}
+
+.playing{
+  margin-bottom:5px;
+  overflow: hidden;
+  .ellipsis;
+}
+
+.clear{
+  clear: both;
+}
+
+.thiner{
+  .alter-font(lighter,italic);
+  font-family: @font;
+}
+
+.thin{
+  .alter-font(light,italic);
+  font-family: @font;
+}
+
+.thick{
+  .alter-font(bold,oblique);
+  font-family: @font;
+}
+
+.thick-status{
+  .stream-status;
+  font-size: 2.5em;
+  margin-left:5px;
+ }
+
+.btn-search
+{
+  color: #FFF;
+  background-color: #8161BC;
+  border-color: #A990D8;
+}
+
+.site-header
+{
+  margin-left: 10px;
+}

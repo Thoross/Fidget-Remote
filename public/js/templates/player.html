@@ -1,5 +1,5 @@
 <object type="application/x-shockwave-flash"
-        height="60%"
+        height="75%"
         width="100%"
         id="live_embed_player_flash"
         data="{{channel.objectData}}"
@@ -18,9 +18,13 @@
 </object>
 <div>
     <span class="glyphicon glyphicon-user"></span>
-    {{ channel.name }}
-        <span class="pull-right">
-            {{ channel.viewers }} Viewers
+    <span class="thin">{{ channel.name }}</span>
+        <span class="pull-right thin">
+            {{ channel.viewers | number}} Viewers
             <span class="glyphicon glyphicon-eye-open"></span>
         </span>
+</div>
+<div id="chat">
+
+
 </div>

@@ -1,0 +1,63 @@
+body {
+  font-family: "Lato", sans-serif;
+  background-color: #6441a5;
+  color: #ffffff;
+}
+#search-results {
+  margin-top: 20px;
+}
+.thumbnail {
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+.stream {
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 261px;
+  cursor: pointer;
+}
+.stream-status {
+  text-overflow: ellipsis;
+  font-weight: bold;
+  font-style: oblique;
+}
+.playing {
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.clear {
+  clear: both;
+}
+.thiner {
+  font-weight: lighter;
+  font-style: italic;
+  font-family: "Lato", sans-serif;
+}
+.thin {
+  font-weight: light;
+  font-style: italic;
+  font-family: "Lato", sans-serif;
+}
+.thick {
+  font-weight: bold;
+  font-style: oblique;
+  font-family: "Lato", sans-serif;
+}
+.thick-status {
+  text-overflow: ellipsis;
+  font-weight: bold;
+  font-style: oblique;
+  font-size: 2.5em;
+  margin-left: 5px;
+}
+.btn-search {
+  color: #FFF;
+  background-color: #8161BC;
+  border-color: #A990D8;
+}
+.site-header {
+  margin-left: 10px;
+}

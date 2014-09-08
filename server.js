@@ -16,12 +16,11 @@ module.exports.app = app;
 routes = require('./routes/routes');
 
 app.listen(config.serverPort);
-console.log('Listening on Port 3000');
+console.log('Listening on Port '+config.serverPort);
 
 var twitchAPI = 'https://api.twitch.tv/kraken/search/streams?limit=25&offset=0&q=';
 
 io.sockets.on('connection', function(socket) {
-    console.log('');
     socket.on('twitch:search', function(options) {
         var query = options.next != null ? options.next : twitchAPI + options.query;
         var request = http.get(query, function(res) {

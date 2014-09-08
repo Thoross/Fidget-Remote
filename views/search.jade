@@ -6,23 +6,27 @@ html(ng-app='fidgetStream')
    head
         title Fidget Remote
         meta(name="viewport" content="width=device-width, initial-scale=1.0" )
+        link(href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css')
         link(rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css")
-        link(rel="stylesheet" href="/bootswatch/slate/bootstrap.min.css")
-        link(rel="stylesheet" href="/css/main.css")
+        link(rel="stylesheet" href="/less/main.css")
    body
-       .container(ng-controller='searchController')
-           h1 Fidget Remote
-                br
-                small  A Twitch.tv Remote
-           div(class='col-lg-12 col-sm-12' infinite-scroll='loadNext()' infinite-scroll-scroll-distance='4' infinite-scroll-disabled='loading')
+       h1.site-header
+           span.thin Fidget
+           span.thick Remote
+           br
+           .thiner A Twitch.tv Remote
+       div(ng-controller='searchController')
+           div(class='container' infinite-scroll='loadNext()' infinite-scroll-scroll-distance='4' infinite-scroll-disabled='loading')
+               form(ng-submit='search()')
+                   .input-group
+                       input(type='text', class='form-control', placeholder='Search', ng-model='query')
+                       span(class='input-group-btn')
+                           button(class='btn btn-search', type='submit')
+                               span(class='glyphicon glyphicon-search')
+                               span()  Search
 
-               .input-group
-                   input(type='text' class='form-control' placeholder='Search' ng-model='query')
-                   span(class='input-group-btn')
-                       button(class='btn btn-default' type='button' ng-click='search()')
-                           span(class='glyphicon glyphicon-search')
-                           span()  Search
                div(id='search-results' )
+                   h2(ng-show='success', class='') Search Results for {{query}}
                    twitch-stream(class="col-lg-4 game-result" ng-repeat="stream in streams" stream="stream")
                div(class='clear')
            div(ng-show='loading' class='col-lg-12 col-sm-12 loading')
